@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { CiMenuBurger } from "react-icons/ci";
-import MyMapComponent from "../Components/Custommap";
+import Dialog_appointment from "../Components/Dialog_appointment"
 
 
-export default function Homepage(){
+export default function Homepage({cases,status}){
     const [sidebarOpen, setSidebarOpen] = React.useState(false);
     const FAQItem = ({ question, answer }) => {
         const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +18,6 @@ export default function Homepage(){
             </div>
         );
     };
-
 
         const faqs = [
             {
@@ -63,7 +62,7 @@ export default function Homepage(){
                                 <span className="relative text-black">rights</span>
                             </span></h1>
                             <p className="text-gray-600 mb-6">Commit to defending your rights. Take advantage of our expertise to obtain legal advice tailored to your needs.</p>
-                            <button className="bg-blue-400 text-white px-6 py-3 rounded-full shadow-md hover:bg-blue-500 transition duration-300">Schedule a Consultation</button>
+                            <Dialog_appointment cases={cases} />
                         </div>
                         <div className="md:w-1/2 mt-8 md:mt-0">
                             <div className="relative">
@@ -157,7 +156,6 @@ export default function Homepage(){
                 <br />
 
             </div>
-            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}><MyMapComponent  /></div>
                      <div style={{marginTop:'60px'}} className="bg-gray-800 text-white py-10">
                     <div className="container mx-auto flex justify-around">
                         <div className="text-center">
