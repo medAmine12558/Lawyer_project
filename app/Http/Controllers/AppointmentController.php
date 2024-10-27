@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Enum\Casetype;
 use App\Enum\Status;
 use Inertia\Inertia;
+use App\Models\Appointment;
 
 class AppointmentController extends Controller
 {
@@ -22,6 +23,18 @@ class AppointmentController extends Controller
         return $statustype;
     }
     public function homepage(){
-        return Inertia::render('Homepage',['cases'=>$this->type_of_cases(),'status'=>$this->type_of_status()]);
+        return Inertia::render('Homepage',['cases'=>$this->type_of_cases()]);
     }
+    public function add_consultation(Request $R) {
+        $validatedData = $R->validate([
+            'full_name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'tele' => 'required|string|min:8|max:15',
+            'case_type' => 'required|string|max:255',
+        ]);
+
+        $appoin = Appointment::create($validatedData);
+
+        return Inertia::render('Homepage',['cases'=>$this->type_of_cases()]);
+     }
 }

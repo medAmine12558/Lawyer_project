@@ -7,13 +7,13 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
+import { Inertia } from '@inertiajs/inertia';
+import  Snackbar  from './Snackbar';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -37,18 +37,40 @@ export default function Dialog_appointment({cases}) {
 
 const [emailerror , setEmailerror]=React.useState()
 const [phoneNbrerror , setPhoneNbrerror]=React.useState()
+const [openSnackBar, setOpenSnackBar] = React.useState(false);
+
 
   const handleClickOpen = () => {
     setOpen(true);
+    setOpenSnackBar(false)
   };
   const handleClose = () => {
     setOpen(false);
+    setValues({
+    full_name:'',
+    email:'',
+    tele:'',
+    case_type:''
+  })
+  setSelected_case('')
   };
 
   //function that hundel the submit of the form
-  function hundel_submit(e){
+   async function hundel_submit(e){
     e.preventDefault();
-    console.log(values)
+    setOpenSnackBar(false)
+    if(values.full_name==='' || values.email==='' || values.tele==='' || values.case_type===''){
+        alert('Please fill all the fields with correct values')
+        return null;
+    }
+    try{
+        await Inertia.post('/add_consultation', values)
+        setOpenSnackBar(true)
+    }catch(e){
+        alert('Oups , there is an error somewhere')
+    }
+
+
   }
 
   //function that hundel the email error
@@ -65,7 +87,7 @@ const [phoneNbrerror , setPhoneNbrerror]=React.useState()
 
   //function that hundel the phone error
   function hundel_phoneNbr_error(e){
-    if(e.target.value.length!=10){
+    if(e.target.value.length<=7 ||  e.target.value.length>=15){
         setPhoneNbrerror('this phone numbre is incorrect !')
         setValues((prevValues)=>({...prevValues,tele:''}))
     }else{
@@ -100,6 +122,7 @@ const [phoneNbrerror , setPhoneNbrerror]=React.useState()
         >
           <CloseIcon />
         </IconButton>
+
         <DialogContent dividers>
 
             <TextField id="outlined-basic" label="Full name" variant="outlined" onChange={(e)=>{setValues((prevValues)=>({...prevValues,full_name:e.target.value}))}}/>
@@ -108,7 +131,7 @@ const [phoneNbrerror , setPhoneNbrerror]=React.useState()
             <TextField id="outlined-basic" label="Your Email" variant="outlined" onChange={hundel_email_error} error={!! emailerror} helperText={emailerror} />
             <br />
             <br />
-            <TextField id="outlined-basic" label="Your phone number" variant="outlined" onChange={hundel_phoneNbr_error} error={!! phoneNbrerror} helperText={phoneNbrerror}/>
+            <TextField  type='number' id="outlined-basic" label="Your phone number" variant="outlined" onChange={hundel_phoneNbr_error} error={!! phoneNbrerror} helperText={phoneNbrerror}/>
             <br />
             <br />
             <FormControl sx={{ m: 1, minWidth: 120 }}>
@@ -133,8 +156,12 @@ const [phoneNbrerror , setPhoneNbrerror]=React.useState()
           <Button autoFocus onClick={hundel_submit}>
             Submit
           </Button>
+          {openSnackBar==true && (
+        <Snackbar action={openSnackBar} />
+      )}
         </DialogActions>
       </BootstrapDialog>
+
     </div>
   );
 }

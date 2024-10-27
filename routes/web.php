@@ -24,6 +24,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::get('/homepage',[AppointmentController::class,'homepage']);
-Route::get('/a',[AppointmentController::class, 'type_of_cases']);
+Route::get('/homepage',[AppointmentController::class,'homepage'])->name('homepage');
+Route::post('/add_consultation',[AppointmentController::class,'add_consultation']);
 require __DIR__.'/auth.php';

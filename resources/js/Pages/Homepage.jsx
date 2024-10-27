@@ -26,7 +26,7 @@ export default function Homepage({cases,status}){
             },
             {
                 question: "How can I contact legal support?",
-                answer: "You can contact legal support by calling our office at (123) 456-7890 or emailing us at support@lawfirm.com."
+                answer: "You can contact legal support by calling +212 663-364471 or emailing us at allamilawyeroffice@gmail.com"
             },
             {
                 question: "What is your consultation policy?",
