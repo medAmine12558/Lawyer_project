@@ -14,6 +14,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { Inertia } from '@inertiajs/inertia';
 import  Snackbar  from './Snackbar';
+import axios from 'axios';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -64,7 +65,11 @@ const [openSnackBar, setOpenSnackBar] = React.useState(false);
         return null;
     }
     try{
-        await Inertia.post('/add_consultation', values)
+        await axios.post('/add_consultation', values).then(response =>{
+            console.log('hi')
+        }).catch(error => {
+            console.log(error)
+        })
         setOpenSnackBar(true)
     }catch(e){
         alert('Oups , there is an error somewhere')

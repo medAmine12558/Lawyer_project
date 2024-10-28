@@ -37,4 +37,16 @@ class AppointmentController extends Controller
 
         return Inertia::render('Homepage',['cases'=>$this->type_of_cases()]);
      }
+     public function adminpage() {
+        $appointments = Appointment::paginate(10);
+
+        // Formater les dates
+        $appointments->getCollection()->transform(function ($appointment) {
+            $appointment->created_at = $appointment->created_at->format('Y-m-d H:i:s');
+            $appointment->updated_at = $appointment->updated_at->format('Y-m-d H:i:s');
+            return $appointment;
+        });
+
+        return Inertia::render('Adminpage', ['appointments' => $appointments]);
+    }
 }
