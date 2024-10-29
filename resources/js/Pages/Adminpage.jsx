@@ -6,8 +6,11 @@ import DownloadIcon from '@mui/icons-material/Download';
 import Label from '@/Components/Label';
 import Checkbox from '@mui/material/Checkbox';
 import { Inertia } from '@inertiajs/inertia';
+import DialogFilter from '@/Components/DialogFilter';
 
-export default function Adminpage({appointments}) {
+export default function Adminpage({appointments,statustypes}) {
+  const [filter_clicked,setFilter_clicked]=React.useState(false)
+  console.log(statustypes);
     appointments.data = appointments.data.map(i => {
         let createdAtArray = i.created_at.split(''); // Convertir en tableau de caractères
 
@@ -48,21 +51,16 @@ console.log(appointments)
           <p style={{ color: 'gray', margin: 0 }}>30 done this month</p>
         </div>
 
-        <TextField
-          variant="outlined"
-          placeholder="Search"
-          size="small"
-          InputProps={{
-            startAdornment: <SearchIcon position="start" />,
-          }}
-          style={{ width: 150 }}
-        />
 
-        <Button variant="contained" color="primary" style={{ backgroundColor: '#000' }}>
+
+
+      </div>
+      <Button variant="contained" color="primary" style={{ backgroundColor: '#000' }}>
           NEW INVOICE
         </Button>
-      </div>
-
+        <Button onClick={()=>{setFilter_clicked(true)}} variant="contained" color="primary" style={{ backgroundColor: '#000',marginLeft:'20px' }}>
+          Filter
+        </Button>
       {/* Tableau */}
       <TableContainer component={Paper}>
         <Table>
@@ -121,6 +119,9 @@ console.log(appointments)
           </TableBody>
         </Table>
       </TableContainer>
+      {filter_clicked &&(
+        <DialogFilter onClose={()=>{setFilter_clicked(false)}} open={filter_clicked} status={statustypes}/>
+      )}
 
     </div>
   );
