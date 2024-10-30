@@ -5,6 +5,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Middleware\ForceHttps;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -25,7 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['force.https'])->group(function () {
+Route::middleware(ForceHttps::class)->group(function () {
     Route::get('/',[AppointmentController::class,'homepage'])->name('homepage');
     Route::post('/add_consultation',[AppointmentController::class,'add_consultation']);
     Route::get('/adminpage',[AppointmentController::class,'adminpage']);
