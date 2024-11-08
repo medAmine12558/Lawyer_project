@@ -7,7 +7,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Middleware\ForceHttps;
 
-Route::get('/', function () {
+Route::get('/a', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
@@ -29,6 +29,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/',[AppointmentController::class,'homepage'])->name('homepage');
     Route::post('/add_consultation',[AppointmentController::class,'add_consultation']);
-    //Route::get('/adminpage',[AppointmentController::class,'adminpage']);
+    Route::get('/adminpage',[AppointmentController::class,'adminpage'])->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
