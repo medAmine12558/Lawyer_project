@@ -53,7 +53,7 @@ export default function Homepage({cases,status}){
                             </button>
                         </div>
                         <div className="flex items-center">
-                            <img src="https://placehold.co/100x50" alt="Your Logo" className="h-8"/>
+                            <img style={{width:'100px'}} src="/images/Black and Cream Vintage Illustrative Law Services Logo.png" alt="Your Logo" className="h-8"/>
                         </div>
                     </header>
                     <main style={{marginTop:'80px'}} className="flex flex-col md:flex-row items-center justify-between p-8 md:p-16">
