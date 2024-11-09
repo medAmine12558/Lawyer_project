@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('tele');
             $table->string('case_type');
             $table->string('status')->default('in_progress');
-            $table->timestamps();
+            $table->date('created_date');
         });
     }
 

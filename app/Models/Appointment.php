@@ -14,11 +14,13 @@ class Appointment extends Model
         'email',
         'tele',
         'case_type',
-        'status'
+        'status',
+        'created_date'
     ];
     protected $casts = [
 
         'case_type' => Casetype::class,
         'status' => Status::class
     ];
+    public $timestamps = false; 
 }

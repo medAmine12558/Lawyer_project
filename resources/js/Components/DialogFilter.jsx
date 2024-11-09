@@ -12,15 +12,35 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { Inertia } from '@inertiajs/inertia';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import dayjs from 'dayjs';
+import axios from 'axios';
 
-export default function DialogFilter({onClose,open,status}) {
-    const [value,setValue]=React.useState('')
-    const handleChange = (event) => {
-        setValue(event.target.value)
-    };
+export default function DialogFilter({onClose,open,status,cases,setAppointments1}) {
+    const [status_value,setStatus_value]=React.useState(null)
+    const [casetype_value,setCasetype_value]=React.useState(null)
+    const [date_value,setDate_value]=React.useState({
+        D:null,
+        M:null,
+        Y:null
+    })
 
     function hundel_submit(){
-        Inertia.post('/filter_with_status',value)
+        const data={
+            status:status_value,
+            case_type:casetype_value,
+            date:`${date_value.Y}-${date_value.M}-${date_value.D}`
+        }
+
+
+        axios.post('/filter',data)
+        .then(res=>{
+
+            setAppointments1(res.data)
+            onClose()
+        })
     }
   return (
     <React.Fragment>
@@ -41,10 +61,11 @@ export default function DialogFilter({onClose,open,status}) {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={value}
+          value={status_value}
           label="Case type"
-          onChange={handleChange}
+          onChange={(e)=>{setStatus_value(e.target.value)}}
         >
+            <MenuItem value={null}>none</MenuItem>
           {status.map((i,index)=>(
             <MenuItem key={index} value={i}>{i}</MenuItem>
           ))}
@@ -52,6 +73,34 @@ export default function DialogFilter({onClose,open,status}) {
       </FormControl>
     </Box>
           </DialogContentText>
+          <br />
+          <DialogContentText id="alert-dialog-description">
+          <Box sx={{ minWidth: 120 }}>
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">case type</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={casetype_value}
+          label="Case type"
+          onChange={(e)=>{setCasetype_value(e.target.value)}}
+        >
+            <MenuItem value={null}>none</MenuItem>
+          {cases.map((i,index)=>(
+            <MenuItem key={index} value={i}>{i}</MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+    </Box>
+    <br />
+          </DialogContentText>
+          <LocalizationProvider dateAdapter={AdapterDayjs} >
+            <DatePicker onChange={(nvvalue)=>{setDate_value({
+                D:nvvalue.date(),
+                M:nvvalue.month()+1,
+                Y:nvvalue.year()
+            })}}/>
+          </LocalizationProvider>
         </DialogContent>
         <DialogActions>
           <Button onClick={onClose}>close</Button>

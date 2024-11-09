@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TextField, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Chip, IconButton, Paper } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import DescriptionIcon from '@mui/icons-material/Description';
@@ -10,40 +10,12 @@ import DialogFilter from '@/Components/DialogFilter';
 import Dropdown from '@/Components/Dropdown';
 import { usePage } from '@inertiajs/react';
 
-export default function Adminpage({appointments,statustypes}) {
+export default function Adminpage({appointments,statustypes,casetypes}) {
   const [filter_clicked,setFilter_clicked]=React.useState(false)
-  console.log(statustypes);
-    appointments.data = appointments.data.map(i => {
-        let createdAtArray = i.created_at.split(''); // Convertir en tableau de caractères
-
-        for (var i1 = 0; i1 < createdAtArray.length; i1++) {
-            if (createdAtArray[i1] === 'T') {
-                createdAtArray[i1] = ' '; // Remplacer 'T' par un espace
-            } else if (
-                createdAtArray[i1-1] === '.' &&
-                createdAtArray[i1] === '0' &&
-                createdAtArray[i1 + 1] === '0' &&
-                createdAtArray[i1 + 2] === '0' &&
-                createdAtArray[i1 + 3] === '0' &&
-                createdAtArray[i1 + 4] === '0' &&
-                createdAtArray[i1 + 5] === '0' &&
-                createdAtArray[i1 + 6] === 'Z'
-            ) {
-                // Remplacer les '0000000Z' par des espaces
-                for (let j = 0; j < 8; j++) {
-                    createdAtArray[i1 + j] = ' ';
-                }
-            }
-        }
-
-        // Rejoindre le tableau en une nouvelle chaîne
-        i.created_at = createdAtArray.join('');
-        return i;
-    });
+  const [appointments1,setAppointments1]=React.useState(appointments);
 
     const user = usePage().props.auth.user;
 
-console.log(appointments)
   return (
     <div style={{ padding: 16 }}>
       {/* Section du header */}
@@ -55,7 +27,7 @@ console.log(appointments)
 
 
         <Dropdown>
-                                    <Dropdown.Trigger>
+            <Dropdown.Trigger>
                                         <span className="inline-flex rounded-md">
                                             <button
                                                 type="button"
@@ -114,18 +86,20 @@ console.log(appointments)
               <TableCell>Phone number</TableCell>
               <TableCell>Appointment Date</TableCell>
               <TableCell>Status</TableCell>
+              <TableCell>Case type</TableCell>
               <TableCell align="center">Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {appointments.data.map((invoice, index) => (
+            {appointments1.data.map((invoice, index) => (
               <TableRow key={index}>
                 <TableCell><Checkbox /></TableCell>
                 <TableCell>{invoice.full_name}</TableCell>
                 <TableCell>{invoice.email}</TableCell>
                 <TableCell>{invoice.tele}</TableCell>
-                <TableCell>{invoice.created_at}</TableCell>
+                <TableCell>{invoice.created_date}</TableCell>
                 <TableCell><Label label={invoice.status} /></TableCell>
+                <TableCell>{invoice.case_type}</TableCell>
 
                 <TableCell align="center">
                   <IconButton aria-label="document">
@@ -140,7 +114,7 @@ console.log(appointments)
             <div className="flex justify-between items-center mt-4">
 
 
-{appointments.links.map((link, index) => {
+{appointments1.links.map((link, index) => {
     if (link.label !== 'Next &raquo;'  && link.label !== '&laquo; Previous') {
     return (
         <button
@@ -161,7 +135,7 @@ console.log(appointments)
         </Table>
       </TableContainer>
       {filter_clicked &&(
-        <DialogFilter onClose={()=>{setFilter_clicked(false)}} open={filter_clicked} status={statustypes}/>
+        <DialogFilter onClose={()=>{setFilter_clicked(false)}} open={filter_clicked} status={statustypes} cases={casetypes} setAppointments1={setAppointments1}/>
       )}
 
     </div>
