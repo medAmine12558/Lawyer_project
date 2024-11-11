@@ -36,7 +36,7 @@ class AppointmentController extends Controller
 
         $appoin = Appointment::create($validatedData);
 
-        return Inertia::render('Homepage',['cases'=>$this->type_of_cases()]);
+        return response()->json('success');
      }
      public function adminpage() {
         $appointments = Appointment::paginate(10);
@@ -67,24 +67,27 @@ class AppointmentController extends Controller
         }else if($status && $caseType && $date){
             $query->where('status',$status)->where('case_type',$caseType)->where('created_date',$date);
         }
-
-
-        // Ajoutez les conditions de filtrage de manière conditionnelle
-        /*$query->when($r->input('status'), function ($query, $status) {
-            return $query->where('status', $status);
-        });
-
-        $query->when($r->input('case_type'), function ($query, $caseType) {
-            return $query->where('case_type', $caseType);
-        });
-
-        $query->when($r->input('date'), function ($query, $date) {
-            return $query->where('created_date', $date);
-        });*/
-
-        // Exécutez la requête et paginez les résultats
         $appointments = $query->paginate(10);
 
         return response()->json($appointments);
+    }
+
+    public function deletewithgroup(Request $r){
+        $checkeddelete = $r->input('checkeddelete');
+        foreach($checkeddelete as $a){
+            $appointment = Appointment::find($a);
+            $appointment->delete();
+        }
+        return response()->json('success');
+    }
+
+    public function editlabel(Request $r){
+        $id=$r->input('id');
+        $status=$r->input('status');
+        $appointment = Appointment::find($id);
+        $appointment->update([
+            'status'=>$status
+        ]);
+        return response()->json('success');
     }
 }

@@ -32,5 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/add_consultation',[AppointmentController::class,'add_consultation']);
     Route::get('/adminpage',[AppointmentController::class,'adminpage'])->middleware(['auth', 'verified']);
     Route::post('/filter',[AppointmentController::class,'filter'])->middleware(['auth', 'verified']);
+    Route::delete('/deleteAppointmentWithBox',[AppointmentController::class,'deletewithgroup'])->middleware(['auth', 'verified']);
+    Route::post('/editlabel',[AppointmentController::class,'editlabel'])->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';

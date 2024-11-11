@@ -66,11 +66,11 @@ const [openSnackBar, setOpenSnackBar] = React.useState(false);
     }
     try{
         await axios.post('/add_consultation', values).then(response =>{
-            console.log('hi')
+            setOpenSnackBar(true)
         }).catch(error => {
             console.log(error)
         })
-        setOpenSnackBar(true)
+
     }catch(e){
         alert('Oups , there is an error somewhere')
     }
@@ -162,7 +162,7 @@ const [openSnackBar, setOpenSnackBar] = React.useState(false);
             Submit
           </Button>
           {openSnackBar==true && (
-        <Snackbar action={openSnackBar} />
+        <Snackbar open={openSnackBar} onClose={()=>{setOpenSnackBar(false)}} message={'your appointement has been added successfully ✅'} action={()=>{console.log('')}}/>
       )}
         </DialogActions>
       </BootstrapDialog>

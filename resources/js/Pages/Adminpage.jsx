@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { TextField, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Chip, IconButton, Paper } from '@mui/material';
+import React, { useState , useCallback , useEffect } from 'react';
+import {  Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, IconButton, Paper, Snackbar } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import DescriptionIcon from '@mui/icons-material/Description';
 import DownloadIcon from '@mui/icons-material/Download';
@@ -9,12 +9,89 @@ import { Inertia } from '@inertiajs/inertia';
 import DialogFilter from '@/Components/DialogFilter';
 import Dropdown from '@/Components/Dropdown';
 import { usePage } from '@inertiajs/react';
+import { DeleteDialog } from '@/Components/DeleteDialog';
+import axios from 'axios';
+import EditLabelDialog from '@/Components/EditLabelDialog';
 
 export default function Adminpage({appointments,statustypes,casetypes}) {
   const [filter_clicked,setFilter_clicked]=React.useState(false)
   const [appointments1,setAppointments1]=React.useState(appointments);
+  const [checkeddelete,setCheckeddelete]=useState([])
+  const [showdeletebtn,setShowdeletebtn]=useState(false)
+  const [opendeletedialog,setSOpendeletedialog]=useState(false)
+  const [openSnackbaredialog,setOpenSnackbaredialog]=useState(false)
+  const [openEditLabelDialog,setOpenEditLabelDialog]=useState(false)
+  const [id,setId]=useState(null)
+  const [statuschosed,setStatuschosed]=useState(null)
+  const [data_edit_label,setData_edit_label]=useState({})
+  const [opensnackbareforeditstatus,setOpensnackbareforeditstatus]=useState(false)
+
 
     const user = usePage().props.auth.user;
+    console.log(showdeletebtn);
+
+    const handel_Check_Box_Change=useCallback((id)=>{
+        const is_checked=checkeddelete.includes(id);
+        if(is_checked){
+            setCheckeddelete(checkeddelete.filter((i)=>i != id))
+        }else{
+            setCheckeddelete([...checkeddelete,id]);
+        }
+    },[checkeddelete, setCheckeddelete])
+
+
+
+    useEffect(()=>{
+        if(checkeddelete.length>0){
+            setShowdeletebtn(true)
+        }else{
+            setShowdeletebtn(false)
+        }
+        })
+
+        const handel_Delete=()=>{
+            axios.delete('/deleteAppointmentWithBox',  {data: { checkeddelete: checkeddelete }}).then(res=>{
+                setOpenSnackbaredialog(true)
+            }).catch(error=>{
+                console.log(error)
+            })
+        }
+
+        function handel_edit_label(){
+            const data={
+                id:id,
+                status:data_edit_label
+            }
+            axios.post('/editlabel',data).then(res=>{
+                setOpensnackbareforeditstatus(true)
+            })
+        }
+
+        useEffect(() => {
+            if (openSnackbaredialog) {
+                // Démarrer un timer pour recharger la page après 3 secondes (3000 ms)
+                const timer = setTimeout(() => {
+                    window.location.reload();
+                }, 800); // Ajustez le délai selon vos besoins
+
+                // Nettoyer le timer si le Snackbar se ferme ou si le composant se démonte
+                return () => clearTimeout(timer);
+            }
+        }, [openSnackbaredialog]);
+
+
+        useEffect(() => {
+            if (opensnackbareforeditstatus) {
+                // Démarrer un timer pour recharger la page après 3 secondes (3000 ms)
+                const timer = setTimeout(() => {
+                    window.location.reload();
+                }, 800); // Ajustez le délai selon vos besoins
+
+                // Nettoyer le timer si le Snackbar se ferme ou si le composant se démonte
+                return () => clearTimeout(timer);
+            }
+        }, [opensnackbareforeditstatus]);
+
 
   return (
     <div style={{ padding: 16 }}>
@@ -80,7 +157,11 @@ export default function Adminpage({appointments,statustypes,casetypes}) {
           {/* Header du tableau */}
           <TableHead>
             <TableRow>
-                <TableCell><Checkbox /></TableCell>
+            <TableCell>
+            {showdeletebtn &&(
+                            <button onClick={()=>{setSOpendeletedialog(true)}}>supprimer</button>
+            )}
+            </TableCell>
               <TableCell>Customer</TableCell>
               <TableCell>Email</TableCell>
               <TableCell>Phone number</TableCell>
@@ -93,7 +174,7 @@ export default function Adminpage({appointments,statustypes,casetypes}) {
           <TableBody>
             {appointments1.data.map((invoice, index) => (
               <TableRow key={index}>
-                <TableCell><Checkbox /></TableCell>
+                <TableCell><Checkbox onClick={()=>{handel_Check_Box_Change(invoice.id) ; setShowdeletebtn(true)}} /></TableCell>
                 <TableCell>{invoice.full_name}</TableCell>
                 <TableCell>{invoice.email}</TableCell>
                 <TableCell>{invoice.tele}</TableCell>
@@ -101,14 +182,7 @@ export default function Adminpage({appointments,statustypes,casetypes}) {
                 <TableCell><Label label={invoice.status} /></TableCell>
                 <TableCell>{invoice.case_type}</TableCell>
 
-                <TableCell align="center">
-                  <IconButton aria-label="document">
-                    <DescriptionIcon />
-                  </IconButton>
-                  <IconButton aria-label="download">
-                    <DownloadIcon />
-                  </IconButton>
-                </TableCell>
+                <TableCell><Button onClick={()=>{setOpenEditLabelDialog(true) ; setId(invoice.id) ; setStatuschosed(invoice.status)}} variant="outlined">Edit label</Button></TableCell>
               </TableRow>
             ))}
             <div className="flex justify-between items-center mt-4">
@@ -137,6 +211,19 @@ export default function Adminpage({appointments,statustypes,casetypes}) {
       {filter_clicked &&(
         <DialogFilter onClose={()=>{setFilter_clicked(false)}} open={filter_clicked} status={statustypes} cases={casetypes} setAppointments1={setAppointments1}/>
       )}
+       {opendeletedialog && (
+                <DeleteDialog open={opendeletedialog} onClose={()=>{setSOpendeletedialog(false)}} action={handel_Delete}/>
+            )}
+        {openSnackbaredialog && (
+                <Snackbar open={openSnackbaredialog} onClose={()=>{setOpenSnackbaredialog(false)}} message={'the appointment has been deleted successfully ✅'} />
+        )}
+        {opensnackbareforeditstatus && (
+                <Snackbar open={opensnackbareforeditstatus} onClose={()=>{setOpensnackbareforeditstatus(false)}} message={'the label has been edited successfully ✅'} />
+        )}
+        {openEditLabelDialog && (
+            <EditLabelDialog open={openEditLabelDialog} onClose={()=>{setOpenEditLabelDialog(false)}} status={statustypes} statuschosed={statuschosed} action={handel_edit_label} data={setData_edit_label}/>
+        )
+        }
 
     </div>
   );
