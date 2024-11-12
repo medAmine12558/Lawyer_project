@@ -25,9 +25,9 @@ export default function Navbare({ para1, para2, para3 }) {
             </Helmet>
 
         </div>
-        <nav className="bg-gray-800 p-4 w-full flex justify-between">
-            <div className="container mx-auto flex items-center justify-between">
-                <div className="flex items-center">
+        <nav className="bg-gray-800 p-4 flex justify-between w-full">
+            <div className="container mx-auto flex items-center justify-between w-full">
+                <div className="flex items-center w-full ">
                     <img src="images/Logo.png" alt="Company logo" className="h-10 w-10" />
                     <span className="ml-2 text-white text-lg">Hicham ALLAMI</span>
                 </div>

@@ -84,7 +84,7 @@ export default function Homepage({ cases, status }) {
             </Helmet>
 
         </div>
-            <header className="fixed top-0 left-0 right-0 flex justify-between items-center p-4 border-b bg-white z-10">
+            <header className="fixed top-0 left-0 right-0 flex justify-between items-center p-4 border-b bg-white z-10 w-full">
                 <div className="flex items-center w-full">
                 <Navbare para1={'#AboutUS'} para2={'#contact'} para3={'#statictics'} />
                 </div>
