@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import { CiMenuBurger } from "react-icons/ci";
 import Dialog_appointment from "../Components/Dialog_appointment";
-import { FaUser , FaDesktop, FaFolderOpen, FaStar, FaTrash } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion'; // Importer framer-motion
+import { Helmet } from 'react-helmet';
+import { FiPhone } from "react-icons/fi";
+import { MdOutlineAlternateEmail } from "react-icons/md";
+import { GiRotaryPhone } from "react-icons/gi";
+import { MdPlace } from "react-icons/md";
+import Navbare from "@/Components/Navbare";
+import { FaLinkedin } from "react-icons/fa";
+
 
 export default function Homepage({ cases, status }) {
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -40,22 +47,48 @@ export default function Homepage({ cases, status }) {
         {
             name: "Hicham ALLAMI",
             description: "Dynamic and creative attorney with over 12 years of experience in the field of education in the United States, including with 'FAIRFAX COUNTY PUBLIC SCHOOL' in Virginia. Currently in the fifth year of a Ph.D. program in Law and International Relations, I am seeking new academic challenges.",
-            image: "https://placehold.co/100x100",
-            alt: "Portrait of Tony Fred"
+            alt: "Hicham Allami - Morrocan Lawyer",
+            Skill1:"- International Law Expertise: Extensive knowledge of international law with experience in cross-border cases and international negotiations.",
+            skill2:"- Public and Private Law: Advanced proficiency in both public and private law, supporting a comprehensive legal perspective.",
+            skill3:"- Family (Divorce) Law: Skilled in family law, particularly in managing divorce cases with sensitivity, ensuring fair and favorable resolutions for clients.",
+            skill4:"- Bilingual Proficiency: Fluent in English and French, offering seamless communication with national and international clients.",
+            skill5:"- Problem Solving and Analytical Skills: Creative and detail-oriented approach to legal challenges, backed by thorough research and analytical rigor.",
+            prof1:"- Attorney at the Casablanca Bar (2015 - Present)",
+            prof2:"  - Legal representation and advisory services in civil, business, family (divorce), international, and contract law.",
+            prof3:"  - Full case management, from initial consultation to court representation, focused on protecting client interests.",
+            prof4:"  - Expertise in contract drafting, dispute resolution, mediation, and international arbitration.",
+            prof5:"  - Successful collaboration with national and international clients, fostering long-term, trust-based relationships.",
+            prof6:"  - Notary Clerk (2000 - 2004)",
+            prof7:"  - Preparation and drafting of notarial deeds, contracts, and legal documents.",
+            prof8:"  - Conducted legal research to ensure compliance and maintain organized, confidential records."
         }
     ];
 
     return (
         <div>
+              <div>
+            <Helmet>
+
+                <link rel="icon" type="image/jpg+xml" href="/images/Black and Cream Vintage Illustrative Law Services Logo.png" />
+                <meta name="description" content="Hicham Allami - Morrocan Lawyer"></meta>
+                <link rel="canonical" href="https://Allamilawoffice.com/" />
+                <meta property="og:title" content="Hicham Allami - Morrocan Lawyer"></meta>
+                <meta property="og:description"content="Hicham Allami - Morrocan Lawyer" />
+                <meta property="og:url" content="https://Hicham Allami.com/" />
+                <meta property="og:image" content="images/SFG-Lawyer.jpg" />
+                <meta property="og:site_name" content="Hicham Allami - Morrocan Lawyer"></meta>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <title>Hicham Allami - Morrocan Lawyer</title>
+                <meta property="og:type" content="website"></meta>
+                <meta name="keywords" content="Morrocan Lawyer,Hiacham Allami" />
+            </Helmet>
+
+        </div>
             <header className="fixed top-0 left-0 right-0 flex justify-between items-center p-4 border-b bg-white z-10">
-                <div className="flex items-center">
-                    <button className="text-2xl" onClick={() => setSidebarOpen(true)}>
-                        <CiMenuBurger />
-                    </button>
+                <div className="flex items-center w-full">
+                <Navbare para1={'#AboutUS'} para2={'#contact'} para3={'#statictics'} />
                 </div>
-                <div className="flex items-center">
-                    <img style={{ width: '100px' }} src="/images/Black and Cream Vintage Illustrative Law Services Logo.png" alt="Your Logo" className="h-8" />
-                </div>
+
             </header>
             <main style={{ marginTop: '80px' }} className="flex flex-col md:flex-row items-center justify-between p-8 md:p-16">
                 <div className="md:w-1/2">
@@ -68,8 +101,7 @@ export default function Homepage({ cases, status }) {
                 <div className="md:w-1/2 mt-8 md:mt-0">
                     <div className="relative">
                         <div className="absolute inset-0 bg-yellow-100 rounded-full transform rotate-12"></div>
-                        <img src="/images/hummer.svg" alt="A wooden gavel on a white background" className="relative z-10 rounded-lg shadow-lg" />
-                    </div>
+                        <img src="/images/hummer.svg" alt="A wooden gavel on a white background" className="relative z-0 rounded-lg shadow-lg" />                    </div>
                 </ div>
             </main>
             <main className="flex">
@@ -109,67 +141,34 @@ export default function Homepage({ cases, status }) {
                 <p className="text-lg text-gray-600 mb-12">Experienced attorney committed to your legal success</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                     {teamMembers.map((member, index) => (
-                        <div key={index} className="flex items-center">
+                        <div key={index} className="flex items-center" style={{width:'100%'}}>
                             <img className="w-24 h-24 rounded-full mr-6" src="/images/Hichame.png" alt={member.alt} />
                             <div>
                                 <h2 className="text-xl font-bold text-gray-900">{member.name}</h2>
-                                <p className="text-sm text-gray-600 mb-2">{member.title}</p>
-                                <p className="text-gray-700">{member.description}</p>
+                                <p style={{width:'1000px'}} className="text-gray-700">{member.description}</p>
+                                <br />
+                                <h3 className="font-semibold text-sm text-gray-800">Skills and Expertise : </h3>                                <p className="text-gray-700">{member.Skill1}</p>
+                                <p className="text-gray-700">{member.skill2}</p>
+                                <p className="text-gray-700">{member.skill3}</p>
+                                <p className="text-gray-700">{member.skill4}</p>
+                                <p className="text-gray-700">{member.skill5}</p>
+                                <br />
+                                <h3 className="font-semibold text-sm text-gray-800">Professional Experience : </h3>
+                                <p className="text-gray-700">{member.prof1}</p>
+                                <p className="text-gray-700">{member.prof2}</p>
+                                <p className="text-gray-700">{member.prof3}</p>
+                                <p className="text-gray-700">{member.prof4}</p>
+                                <p className="text-gray-700">{member.prof5}</p>
+                                <p className="text-gray-700">{member.prof6}</p>
+                                <p className="text-gray-700">{member.prof7}</p>
+                                <p className="text-gray-700">{member.prof8}</p>
                             </div>
                         </div>
                     ))}
                 </div>
             </div>
 
-            <AnimatePresence>
-                {sidebarOpen && (
-                    <motion.div
-                        className={`fixed inset-0 z-10 bg-gray-800 bg-opacity-50`}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        onClick={() => setSidebarOpen(false)}
-                    >
-                        <motion.div
-                            className={`fixed inset-y-0 left-0 w-64 p-6 bg-blue-500 rounded-tr-3xl shadow-lg`}
-                            initial={{ x: '-100%' }}
-                            animate={{ x: 0 }}
-                            exit={{ x: '-100%' }}
-                            transition={{ type: 'spring', stiffness: 300 }}
-                            onClick={(e) => e.stopPropagation()}
-                        >
-                            <h2 className="text-white text-lg mb-8">Menu</h2>
-                            <ul className="space-y-4">
-                                <li>
-                                    <a href="#" className="flex items-center text-white text-base">
 
-                                        home
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="#AboutUS" className="flex items-center text-white text-base">
-
-                                        AboutUS
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#contact" className="flex items-center text-white text-base">
-
-                                        Contact Us
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#statictics" className="flex items-center text-white text-base">
-
-                                        Our statistics
-                                    </a>
-                                </li>
-                            </ul>
-                        </motion.div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
 
             <div style={{ marginTop: '100px' }} className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg flex">
                 <div className="w-2/3 pr-8">
@@ -186,30 +185,43 @@ export default function Homepage({ cases, status }) {
                 </div>
                 <br />
             </div>
-            <div id='contact' style={{ marginTop: '60px' }} className="bg-gray-800 text-white py-10">
-                <div className="container mx-auto flex justify-around">
-                    <div className="text-center">
-                        <p className="text-sm">How can we help?</p>
-                        <p className="text-lg font-bold">Contact us anytime</p>
-                    </div>
-                    <div className="text-center">
-                        <p className="text-sm">Call us</p>
-                        <p className="text-lg font-bold">+212 663-364471</p>
-                    </div>
-                    <div className="text-center">
-                        <p className="text-sm">Send us a message</p>
-                        <p className="text-lg font-bold">allamilawyeroffice@gmail.com</p>
-                    </div>
-                    <div className="text-center">
-                        <p className="text-sm">Follow us</p>
-                        <div className="flex justify-center space-x-4">
-                            <i className="fab fa-twitter"></i>
-                            <i className="fab fa-linkedin"></i>
-                            <i className="fab fa-instagram"></i>
+
+            <div id='contact' className="flex flex-col items-center justify-center min-h-screen bg-white p-4">
+                    <div className="w-full max-w-6xl">
+                        <div className="flex flex-col md:flex-row">
+                            <div className="w-full md:w-2/3">
+                                <img src="images/contact_us.jpg" alt="Group of business people in an office" className="w-full h-auto" />
+                            </div>
+                            <div className="w-full md:w-1/3 flex flex-col items-center justify-center bg-white p-8">
+                                <h1 className="text-4xl font-bold text-gold mb-8">CONTACT US</h1>
+                                <div className="bg-gray-900 text-white p-6 rounded-lg shadow-lg border-2 border-purple-500">
+                                    <ul className="space-y-4">
+                                        <li className="flex items-center">
+                                            <i className="fas fa-phone-alt mr-4"></i>
+                                            <span><FiPhone />+212 663-364471</span>
+                                        </li>
+                                        <li className="flex items-center">
+                                            <i className="fas fa-phone-alt mr-4"></i>
+                                            <span><GiRotaryPhone />+212 522-377676</span>
+                                        </li>
+                                        <li className="flex items-center">
+                                            <i className="fas fa-envelope mr-4"></i>
+                                            <span><MdOutlineAlternateEmail />allamilawyeroffice@gmail.com</span>
+                                        </li>
+                                        <li className="flex items-center">
+                                            <i className="fas fa-map-marker-alt mr-4"></i>
+                                            <span><MdPlace />104, Street Sakia Alhamra 2nd floor C-J Casablanca</span>
+                                        </li>
+                                        <li className="flex items-center">
+                                            <i className="fas fa-map-marker-alt mr-4"></i>
+                                            <span><FaLinkedin /><a href="https://www.linkedin.com/in/hicham-allami-82531a133/?originalSubdomain=ma">Join us here</a></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     );
 }

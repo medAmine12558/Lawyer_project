@@ -15,6 +15,8 @@ import Select from '@mui/material/Select';
 import { Inertia } from '@inertiajs/inertia';
 import  Snackbar  from './Snackbar';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
+
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -103,6 +105,25 @@ const [openSnackBar, setOpenSnackBar] = React.useState(false);
 
   //this is the return of this component
   return (
+    <>
+    <div>
+            <Helmet>
+
+                <link rel="icon" type="image/jpg+xml" href="/images/Black and Cream Vintage Illustrative Law Services Logo.png" />
+                <meta name="description" content="Hicham Allami - Morrocan Lawyer"></meta>
+                <link rel="canonical" href="https://Allamilawoffice.com/" />
+                <meta property="og:title" content="Hicham Allami - Morrocan Lawyer"></meta>
+                <meta property="og:description"content="Hicham Allami - Morrocan Lawyer" />
+                <meta property="og:url" content="https://Hicham Allami.com/" />
+                <meta property="og:image" content="images/SFG-Lawyer.jpg" />
+                <meta property="og:site_name" content="Hicham Allami - Morrocan Lawyer"></meta>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <title>Hicham Allami - Morrocan Lawyer</title>
+                <meta property="og:type" content="website"></meta>
+                <meta name="keywords" content="Morrocan Lawyer,Hiacham Allami" />
+            </Helmet>
+            {/* Autres contenus */}
+        </div>
     <div  style={{width:'100px'}}>
       <Button variant="outlined" onClick={handleClickOpen}>
       Schedule a Consultation
@@ -168,5 +189,6 @@ const [openSnackBar, setOpenSnackBar] = React.useState(false);
       </BootstrapDialog>
 
     </div>
+    </>
   );
 }

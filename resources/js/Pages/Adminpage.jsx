@@ -12,6 +12,7 @@ import { usePage } from '@inertiajs/react';
 import { DeleteDialog } from '@/Components/DeleteDialog';
 import axios from 'axios';
 import EditLabelDialog from '@/Components/EditLabelDialog';
+import { Helmet } from 'react-helmet';
 
 export default function Adminpage({appointments,statustypes,casetypes}) {
   const [filter_clicked,setFilter_clicked]=React.useState(false)
@@ -95,6 +96,24 @@ export default function Adminpage({appointments,statustypes,casetypes}) {
 
   return (
     <div style={{ padding: 16 }}>
+        <div>
+            <Helmet>
+
+                <link rel="icon" type="image/jpg+xml" href="images/SFG-Lawyer.jpg" />
+                <meta name="description" content="Hicham Allami - Morrocan Lawyer"></meta>
+                <link rel="canonical" href="https://Allamilawoffice.com/" />
+                <meta property="og:title" content="Hicham Allami - Morrocan Lawyer"></meta>
+                <meta property="og:description"content="Hicham Allami - Morrocan Lawyer" />
+                <meta property="og:url" content="https://Hicham Allami/adminpage.com/" />
+                <meta property="og:image" content="images/SFG-Lawyer.jpg" />
+                <meta property="og:site_name" content="Hicham Allami - Morrocan Lawyer - adminpage"></meta>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <title>Hicham Allami - Morrocan Lawyer - adminpage</title>
+                <meta property="og:type" content="website"></meta>
+                <meta name="keywords" content="Morrocan Lawyer,Hiacham Allami adminpage" />
+            </Helmet>
+            {/* Autres contenus */}
+        </div>
       {/* Section du header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
         <div>
