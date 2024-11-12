@@ -210,7 +210,7 @@ export default function Homepage({ cases, status }) {
                                         </li>
                                         <li className="flex items-center">
                                             <i className="fas fa-map-marker-alt mr-4"></i>
-                                            <span><MdPlace />104, Street Sakia Alhamra 2nd floor C-J Casablanca</span>
+                                            <span><MdPlace />401, Street Sakia Alhamra 2nd floor C-J Casablanca</span>
                                         </li>
                                         <li className="flex items-center">
                                             <i className="fas fa-map-marker-alt mr-4"></i>
