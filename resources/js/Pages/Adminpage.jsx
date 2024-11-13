@@ -164,9 +164,6 @@ export default function Adminpage({appointments,statustypes,casetypes}) {
                                 </Dropdown>
 
       </div>
-      <Button variant="contained" color="primary" style={{ backgroundColor: '#000' }}>
-          NEW INVOICE
-        </Button>
         <Button onClick={()=>{setFilter_clicked(true)}} variant="contained" color="primary" style={{ backgroundColor: '#000',marginLeft:'20px' }}>
           Filter
         </Button>
