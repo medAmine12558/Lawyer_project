@@ -30,7 +30,7 @@ export default function Navbare({ para1, para2, para3 }) {
                             <CiMenuBurger />
                         </button>
                         {isOpen && (
-                            <div className="absolute left-0 mt-2 bg-gray-700 rounded-md shadow-lg w-48">
+                            <div className="absolute left-[-160px] mt-2 bg-gray-700 rounded-md shadow-lg w-48">
                                 <a href="#" className="block text-white py-2 px-4">Home</a>
                                 <a href={para1} className="block text-white py-2 px-4">About US</a>
                                 <a href={para2} className="block text-white py-2 px-4">Contact Us</a>

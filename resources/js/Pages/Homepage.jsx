@@ -98,7 +98,8 @@ export default function Homepage({ cases, status }) {
                     </div>
                 </div>
             </main>
-
+            <br />
+            <br />
             <main className="flex flex-col md:flex-row">
                 <div className="w-full md:w-1/2 bg-blue-200 p-4 md:p-8">
                     <h1 className="text-3xl font-bold mb-4">We are committed to helping you achieve justice with unparalleled support and expert legal guidance, every step of the way.</h1>
@@ -132,14 +133,14 @@ export default function Homepage({ cases, status }) {
                 </div>
             </div>
 
-            <div id='AboutUS' className="max-w-6xl mx-auto py-12 px-4">
+            <div id='AboutUS' className="max-w-6xl mx-auto py-12 px-4 w-full">
                 <h1 className="text-4xl font-bold text-gray-900 mb-2">About Us</h1>
                 <p className="text-lg text-gray-600 mb-12">Experienced attorney committed to your legal success</p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div className="grid grid-cols-1 gap-12 w-full">
                     {teamMembers.map((member, index) => (
-                        <div key={index} className="flex items-center" style={{ width: '100%' }}>
+                        <div key={index} className="flex items-center w-full">
                             <img className="w-24 h-24 rounded-full mr-6" src="/images/Hichame.png" alt={member.alt} />
-                            <div>
+                            <div className="w-full">
                                 <h2 className="text-xl font-bold text-gray-900">{member.name}</h2>
                                 <p className="text-gray-700">{member.description}</p>
                                 <br />
@@ -175,7 +176,7 @@ export default function Homepage({ cases, status }) {
                         ))}
                     </div>
                 </div>
-                <div className="w-full md:w-1/3">
+                <div className="w-full md:w-1/3 mt-6">
                     <img alt="A wooden gavel resting on a round block, symbolizing law and justice." className="rounded-lg shadow-md" height="300" src="https://storage.googleapis.com/a 1aa/image/dmWCBAcDk7J3LBGTp8tQpkfirTfmOahOqqmmkesNn16EJbTnA.jpg" width="300" />
                 </div>
             </div>
