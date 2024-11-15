@@ -1,8 +1,5 @@
 import React, { useState , useCallback , useEffect } from 'react';
 import {  Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, IconButton, Paper, Snackbar } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
-import DescriptionIcon from '@mui/icons-material/Description';
-import DownloadIcon from '@mui/icons-material/Download';
 import Label from '@/Components/Label';
 import Checkbox from '@mui/material/Checkbox';
 import { Inertia } from '@inertiajs/inertia';
@@ -13,6 +10,7 @@ import { DeleteDialog } from '@/Components/DeleteDialog';
 import axios from 'axios';
 import EditLabelDialog from '@/Components/EditLabelDialog';
 import { Helmet } from 'react-helmet';
+import { MdDelete } from "react-icons/md";
 
 export default function Adminpage({appointments,statustypes,casetypes}) {
   const [filter_clicked,setFilter_clicked]=React.useState(false)
@@ -115,11 +113,8 @@ export default function Adminpage({appointments,statustypes,casetypes}) {
             {/* Autres contenus */}
         </div>
       {/* Section du header */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-        <div>
-          <h2 style={{ margin: 0 }}>Invoices</h2>
-          <p style={{ color: 'gray', margin: 0 }}>30 done this month</p>
-        </div>
+      <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginBottom: 16 }}>
+
 
 
         <Dropdown>
@@ -175,7 +170,7 @@ export default function Adminpage({appointments,statustypes,casetypes}) {
             <TableRow>
             <TableCell>
             {showdeletebtn &&(
-                            <button onClick={()=>{setSOpendeletedialog(true)}}>supprimer</button>
+                            <button style={{color:'red'}} onClick={()=>{setSOpendeletedialog(true)}}><MdDelete /> Delete</button>
             )}
             </TableCell>
               <TableCell>Customer</TableCell>

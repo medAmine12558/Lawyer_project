@@ -33,7 +33,7 @@ export default function Homepage({ cases, status }) {
         },
         {
             question: "How can I contact legal support?",
-            answer: "You can contact legal support by calling +212 663-364471 or emailing us at allamilawyeroffice@gmail.com"
+            answer: "You can contact legal support by calling +212 663-364471 or +212 522-377676 or emailing us at allamilawyeroffice@gmail.com"
         },
         {
             question: "What is your consultation policy?",
@@ -44,7 +44,7 @@ export default function Homepage({ cases, status }) {
     const teamMembers = [
         {
             name: "Hicham ALLAMI",
-            description: "Dynamic and creative attorney with over 12 years of experience in the field of education in the United States, including with 'FAIRFAX COUNTY PUBLIC SCHOOL' in Virginia. Currently in the fifth year of a Ph.D. program in Law and International Relations, I am seeking new academic challenges.",
+            description: "Dynamic and creative attorney with 20 years of experience in the field of education in the United States, including with 'FAIRFAX COUNTY PUBLIC SCHOOL' in Virginia. Currently in the fifth year of a Ph.D. program in Law and International Relations, I am seeking new academic challenges.",
             alt: "Hicham Allami - Morrocan Lawyer",
             Skill1: "- International Law Expertise: Extensive knowledge of international law with experience in cross-border cases and international negotiations.",
             skill2: "- Public and Private Law: Advanced proficiency in both public and private law, supporting a comprehensive legal perspective.",
@@ -94,7 +94,7 @@ export default function Homepage({ cases, status }) {
                 <div className="md:w-1/2 mt-8 md:mt-0">
                     <div className="relative">
                         <div className="absolute inset-0 bg-yellow-100 rounded-full transform rotate-12"></div>
-                        <img src="/images/hummer.svg" alt="A wooden gavel on a white background" className="relative z-0 rounded-lg shadow-lg" />
+                        <img src="/images/hummer.svg" alt="Hicham Allami" className="relative z-0 rounded-lg shadow-lg" />
                     </div>
                 </div>
             </main>
@@ -105,7 +105,7 @@ export default function Homepage({ cases, status }) {
                     <h1 className="text-3xl font-bold mb-4">We are committed to helping you achieve justice with unparalleled support and expert legal guidance, every step of the way.</h1>
                 </div>
                 <div className="w-full md:w-1/2">
-                    <img src="/images/SFG-Lawyer.jpg" alt="Image of a tablet and a phone displaying an app" className="w-full h-auto object-cover" />
+                    <img src="/images/SFG-Lawyer.jpg" alt="Hicham Allami" className="w-full h-auto object-cover" />
                 </div>
             </main>
 
@@ -116,9 +116,9 @@ export default function Homepage({ cases, status }) {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <div className="bg-white p-4 rounded shadow-md">
-                        <h2 className="text-3xl font-bold text-gray-800">12</h2>
+                        <h2 className="text-3xl font-bold text-gray-800">20</h2>
                         <h3 className="text-xl font-semibold text-gray-800 mt-2">years of experience</h3>
-                        <p className="text-gray-700 mt-2">With 12 years of experience in the legal field, we have acquired in-depth expertise and a detailed knowledge of legal issues . This rich and varied background allows us to navigate complex situations with ease, thus ensuring sound advice and a solid defense for our clients.</p>
+                        <p className="text-gray-700 mt-2">With 20 years of experience in the legal field, we have acquired in-depth expertise and a detailed knowledge of legal issues . This rich and varied background allows us to navigate complex situations with ease, thus ensuring sound advice and a solid defense for our clients.</p>
                     </div>
                     <div className="bg-gray-800 p-4 rounded shadow-md text-white">
                         <h2 className="text-3xl font-bold">+500</h2>
@@ -139,7 +139,7 @@ export default function Homepage({ cases, status }) {
                 <div className="grid grid-cols-1 gap-12 w-full">
                     {teamMembers.map((member, index) => (
                         <div key={index} className="flex items-center w-full">
-                            <img className="w-24 h-24 rounded-full mr-6" src="/images/Hichame.png" alt={member.alt} />
+                            <img className="w-24 h-24 rounded-full mr-6" src="/images/Hichame.png" alt="Hicham Allami" />
                             <div className="w-full">
                                 <h2 className="text-xl font-bold text-gray-900">{member.name}</h2>
                                 <p className="text-gray-700">{member.description}</p>
@@ -177,7 +177,7 @@ export default function Homepage({ cases, status }) {
                     </div>
                 </div>
                 <div className="w-full md:w-1/3 mt-6">
-                    <img alt="A wooden gavel resting on a round block, symbolizing law and justice." className="rounded-lg shadow-md" height="300" src="https://storage.googleapis.com/a 1aa/image/dmWCBAcDk7J3LBGTp8tQpkfirTfmOahOqqmmkesNn16EJbTnA.jpg" width="300" />
+                    <img alt="Hichame Allami" className="rounded-lg shadow-md" height="300" src="/images/question.jpg" width="300" />
                 </div>
             </div>
 
@@ -185,7 +185,7 @@ export default function Homepage({ cases, status }) {
                 <div className="w-full max-w-6xl">
                     <div className="flex flex-col md:flex-row">
                         <div className="w-full md:w-2/3">
-                            <img src="images/contact_us.jpg" alt="Group of business people in an office" className="w-full h-auto" />
+                            <img src="images/contact_us.jpg" alt="Hicham Allami" className="w-full h-auto" />
                         </div>
                         <div className="w-full md:w-1/3 flex flex-col items-center justify-center bg-white p-8">
                             <h1 className="text-4xl font-bold text-gold mb-8">CONTACT US</h1>
