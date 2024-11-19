@@ -45,7 +45,7 @@ export default function Homepage({ cases, status }) {
         {
             name: "Hicham ALLAMI",
             description: "Dynamic and creative attorney with 20 years of experience in the field of education in the United States, including with 'FAIRFAX COUNTY PUBLIC SCHOOL' in Virginia. Currently in the fifth year of a Ph.D. program in Law and International Relations, I am seeking new academic challenges.",
-            alt: "Hicham Allami - Morrocan Lawyer",
+            alt: "Hicham Allami - Moroccan Lawyer",
             Skill1: "- International Law Expertise: Extensive knowledge of international law with experience in cross-border cases and international negotiations.",
             skill2: "- Public and Private Law: Advanced proficiency in both public and private law, supporting a comprehensive legal perspective.",
             skill3: "- Family (Divorce) Law: Skilled in family law, particularly in managing divorce cases with sensitivity, ensuring fair and favorable resolutions for clients.",
@@ -66,17 +66,17 @@ export default function Homepage({ cases, status }) {
         <div>
             <Helmet>
                 <link rel="icon" type="image/jpg+xml" href="/images/Black and Cream Vintage Illustrative Law Services Logo.png" />
-                <meta name="description" content="Hicham Allami - Morrocan Lawyer" />
+                <meta name="description" content="Hicham Allami - Moroccan Lawyer" />
                 <link rel="canonical" href="https://Allamilawoffice.com/" />
-                <meta property="og:title" content="Hicham Allami - Morrocan Lawyer" />
-                <meta property="og:description" content="Hicham Allami - Morrocan Lawyer" />
+                <meta property="og:title" content="Hicham Allami - Moroccan Lawyer" />
+                <meta property="og:description" content="Hicham Allami - Moroccan Lawyer" />
                 <meta property="og:url" content="https://Hicham Allami.com/" />
                 <meta property="og:image" content="images/SFG-Lawyer.jpg" />
-                <meta property="og:site_name" content="Hicham Allami - Morrocan Lawyer" />
+                <meta property="og:site_name" content="Hicham Allami - Moroccan Lawyer" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <title>Hicham Allami - Morrocan Lawyer</title>
+                <title>Hicham Allami - Moroccan Lawyer</title>
                 <meta property="og:type" content="website" />
-                <meta name="keywords" content="Morrocan Lawyer,Hiacham Allami" />
+                <meta name="keywords" content="Moroccan Lawyer,Hiacham Allami" />
             </Helmet>
 
             <header className="fixed top-0 left-0 right-0 flex justify-between items-center p-4 border-b bg-white z-10 w-full">

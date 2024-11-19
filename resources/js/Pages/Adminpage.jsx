@@ -98,17 +98,17 @@ export default function Adminpage({appointments,statustypes,casetypes}) {
             <Helmet>
 
                 <link rel="icon" type="image/jpg+xml" href="images/SFG-Lawyer.jpg" />
-                <meta name="description" content="Hicham Allami - Morrocan Lawyer"></meta>
+                <meta name="description" content="Hicham Allami - Moroccan Lawyer"></meta>
                 <link rel="canonical" href="https://Allamilawoffice.com/" />
-                <meta property="og:title" content="Hicham Allami - Morrocan Lawyer"></meta>
-                <meta property="og:description"content="Hicham Allami - Morrocan Lawyer" />
+                <meta property="og:title" content="Hicham Allami - Moroccan Lawyer"></meta>
+                <meta property="og:description"content="Hicham Allami - Moroccan Lawyer" />
                 <meta property="og:url" content="https://Hicham Allami/adminpage.com/" />
                 <meta property="og:image" content="images/SFG-Lawyer.jpg" />
-                <meta property="og:site_name" content="Hicham Allami - Morrocan Lawyer - adminpage"></meta>
+                <meta property="og:site_name" content="Hicham Allami - Moroccan Lawyer - adminpage"></meta>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <title>Hicham Allami - Morrocan Lawyer - adminpage</title>
+                <title>Hicham Allami - Moroccan Lawyer - adminpage</title>
                 <meta property="og:type" content="website"></meta>
-                <meta name="keywords" content="Morrocan Lawyer,Hiacham Allami adminpage" />
+                <meta name="keywords" content="Moroccan Lawyer,Hiacham Allami adminpage" />
             </Helmet>
             {/* Autres contenus */}
         </div>
